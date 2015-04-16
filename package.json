@@ -1,0 +1,29 @@
+{
+  "name": "simditor-checkbox",
+  "description": "The mark extension for Simditor.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/nil/simditor-checkbox",
+  "author": {
+    "name": "kshift",
+    "email": "kshift.lv@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nil/simditor-checkbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nil/simditor-checkbox/issues"
+  },
+  "scripts": {
+    "test": "grunt test --verbose"
+  },
+  "devDependencies": {
+    "grunt": "0.x",
+    "grunt-contrib-watch": "0.x",
+    "grunt-contrib-coffee": "0.x",
+    "grunt-contrib-sass": "0.x",
+    "grunt-contrib-jasmine": "0.x",
+    "grunt-umd": "2.x"
+  },
+  "keywords": []
+}

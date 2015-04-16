@@ -1,0 +1,31 @@
+{
+  "name": "simditor-checkbox",
+  "version": "1.0.0",
+  "homepage": "https://github.com/nil/simditor-checkbox",
+  "authors": [
+    "kshift <kshift.lv@gmail.com>"
+  ],
+  "description": "The checkbox extension for Simditor",
+  "main": "lib/simditor-checkbox.js",
+  "keywords": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "spec",
+    "node_modules",
+    "vendor",
+    "Gemfile",
+    "Gemfile.lock",
+    "Gruntfile.coffee",
+    "package.json",
+    "README.md",
+    "umd.hbs"
+  ],
+  "dependencies": {
+    "jquery": "2.x",
+    "simditor": "2.x"
+  },
+  "devDependencies": {
+    "jasmine-jquery": "~2.1.0"
+  }
+}
