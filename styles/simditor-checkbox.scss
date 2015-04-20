@@ -14,8 +14,12 @@
   content: '\f000';
 }
 
-.simditor .simditor-body input[type=checkbox] {
-  width: 20px;
-  font-size: 16px;
-  cursor: pointer;
+.simditor .simditor-body .simditor-checkbox {
+  vertical-align: middle;
+  cursor: default;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
 }

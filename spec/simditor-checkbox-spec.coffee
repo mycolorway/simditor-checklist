@@ -51,4 +51,4 @@ generateSimditor = ->
     simditor.focus()
     $btn.trigger 'mousedown'
 
-    expect($body.find('input[type=checkbox]')).toExist()
+    expect($body.find('input[type=image]')).toExist()

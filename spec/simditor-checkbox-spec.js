@@ -54,7 +54,7 @@
     $btn = $simditor.find('a.toolbar-item-checkbox');
     simditor.focus();
     $btn.trigger('mousedown');
-    return expect($body.find('input[type=checkbox]')).toExist();
+    return expect($body.find('input[type=image]')).toExist();
   });
 
 }).call(this);
