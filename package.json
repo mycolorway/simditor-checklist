@@ -1,18 +1,18 @@
 {
-  "name": "simditor-checkbox",
+  "name": "simditor-checklist",
   "description": "The mark extension for Simditor.",
   "version": "1.0.0",
-  "homepage": "https://github.com/nil/simditor-checkbox",
+  "homepage": "https://github.com/nil/simditor-checklist",
   "author": {
     "name": "kshift",
     "email": "kshift.lv@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nil/simditor-checkbox.git"
+    "url": "git://github.com/nil/simditor-checklist.git"
   },
   "bugs": {
-    "url": "https://github.com/nil/simditor-checkbox/issues"
+    "url": "https://github.com/nil/simditor-checklist/issues"
   },
   "scripts": {
     "test": "grunt test --verbose"

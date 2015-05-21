@@ -3,7 +3,7 @@ module.exports = (grunt) ->
   grunt.initConfig
 
     pkg: grunt.file.readJSON 'package.json'
-    name: "simditor-checkbox"
+    name: "simditor-checklist"
 
     sass:
       styles:
@@ -29,8 +29,8 @@ module.exports = (grunt) ->
         src: 'lib/<%= name %>.js'
         template: 'umd.hbs'
         amdModuleId: '<%= pkg.name %>'
-        objectToExport: 'SimditorCheckbox'
-        globalAlias: 'SimditorCheckbox'
+        objectToExport: 'ChecklistButton'
+        globalAlias: 'ChecklistButton'
         deps:
           'default': ['$', 'Simditor']
           amd: ['jquery', 'simditor']

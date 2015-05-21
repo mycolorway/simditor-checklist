@@ -1,12 +1,12 @@
 {
-  "name": "simditor-checkbox",
+  "name": "simditor-checklist",
   "version": "1.0.0",
-  "homepage": "https://github.com/nil/simditor-checkbox",
+  "homepage": "https://github.com/nil/simditor-checklist",
   "authors": [
     "kshift <kshift.lv@gmail.com>"
   ],
-  "description": "The checkbox extension for Simditor",
-  "main": "lib/simditor-checkbox.js",
+  "description": "The checklist extension for Simditor",
+  "main": "lib/simditor-checklist.js",
   "keywords": [],
   "license": "MIT",
   "ignore": [

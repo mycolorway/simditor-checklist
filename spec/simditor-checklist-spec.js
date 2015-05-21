@@ -1,7 +1,7 @@
 (function() {
   var destroySimditor, generateSimditor;
 
-  describe('simditor-checkbox', function() {
+  describe('simditor-checklist', function() {
     var editor, simditor;
     editor = null;
     return simditor = null;
@@ -13,7 +13,7 @@
     $textarea = $('<textarea id="editor"></textarea>').val(content).appendTo('body');
     return simditor = new Simditor({
       textarea: $textarea,
-      toolbar: ['checkbox', 'title', 'bold', 'italic', 'underline']
+      toolbar: ['checklist', 'title', 'bold', 'italic', 'underline']
     });
   };
 
@@ -43,18 +43,18 @@
     var $simditor;
     $simditor = $('.simditor');
     expect($simditor).toExist();
-    return expect($simditor.find('.simditor-toolbar ul li a.toolbar-item-checkbox')).toExist();
+    return expect($simditor.find('.simditor-toolbar ul li a.toolbar-item-checklist')).toExist();
   });
 
-  it('should insert a checkbox when click the button', function() {
+  it('should insert a checklist when click the button', function() {
     var $body, $btn, $simditor, simditor;
     $simditor = $('.simditor');
     $body = $simditor.find('.simditor-body');
     simditor = $simditor.data('simditor');
-    $btn = $simditor.find('a.toolbar-item-checkbox');
+    $btn = $simditor.find('a.toolbar-item-checklist');
     simditor.focus();
     $btn.trigger('mousedown');
-    return expect($body.find('input[type=image]')).toExist();
+    return expect($body.find('.simditor-checklist li')).toExist();
   });
 
 }).call(this);

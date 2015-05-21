@@ -1,5 +1,5 @@
 
-describe 'simditor-checkbox', ->
+describe 'simditor-checklist', ->
   editor = null
   simditor = null
 
@@ -21,7 +21,7 @@ generateSimditor = ->
       .appendTo 'body'
     simditor = new Simditor
       textarea: $textarea
-      toolbar: ['checkbox', 'title', 'bold', 'italic', 'underline']
+      toolbar: ['checklist', 'title', 'bold', 'italic', 'underline']
 
   destroySimditor = ->
     $textarea = $('#editor')
@@ -40,15 +40,16 @@ generateSimditor = ->
   it 'should render button in simditor', ->
     $simditor = $('.simditor')
     expect($simditor).toExist()
-    expect($simditor.find('.simditor-toolbar ul li a.toolbar-item-checkbox')).toExist()
+    expect($simditor.find('.simditor-toolbar ul li a.toolbar-item-checklist')).toExist()
 
-  it 'should insert a checkbox when click the button', ->
+  it 'should insert a checklist when click the button', ->
     $simditor = $('.simditor')
     $body = $simditor.find('.simditor-body')
     simditor = $simditor.data 'simditor'
-    $btn = $simditor.find('a.toolbar-item-checkbox')
+    $btn = $simditor.find('a.toolbar-item-checklist')
 
     simditor.focus()
     $btn.trigger 'mousedown'
 
-    expect($body.find('input[type=image]')).toExist()
+    expect($body.find('.simditor-checklist li')).toExist()
+

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simditor Checkbox Demo</title>
+    <title>Simditor checklist Demo</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="vendor/bower/simditor/styles/simditor.css"/>
-    <link rel="stylesheet" href="styles/simditor-checkbox.css"/>
+    <link rel="stylesheet" href="styles/simditor-checklist.css"/>
     <style type="text/css">
         html, body {
             background: #F9F9F9;
@@ -35,17 +35,11 @@
 
 <div class="wrapper">
     <header>
-        <h1>Simditor-Checkbox</h1>
+        <h1>simditor-checklist</h1>
     </header>
     <section>
         <textarea id="textarea">
-            <p>Simditor 是团队协作工具 <a href="http://tower.im">Tower</a> 使用的富文本编辑器。</p>
-            <p>相比传统的编辑器它的特点是：</p>
-            <ul>
-                <li>功能精简，加载快速</li>
-                <li>输出格式化的标准 HTML</li>
-                <li>每一个功能都有非常优秀的使用体验</li>
-            </ul>
+            <ul class="simditor-checklist"><li><input type="checkbox" checked="checked"><strike>这是清单</strike></li><li><input type="checkbox">这是清单<br></li><li><input type="checkbox" checked="checked"><strike>这是清单</strike><br></li></ul>
         </textarea>
     </section>
 </div>
@@ -53,10 +47,10 @@
 <script type="text/javascript" src="vendor/bower/simple-module/lib/module.js"></script>
 <script type="text/javascript" src="vendor/bower/simple-hotkeys/lib/hotkeys.js"></script>
 <script type="text/javascript" src="vendor/bower/simditor/lib/simditor.js"></script>
-<script type="text/javascript" src="lib/simditor-checkbox.js"></script>
+<script type="text/javascript" src="lib/simditor-checklist.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        var toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'checkbox', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', '|', 'source'];
+        var toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'checklist', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent'];
         var simditor = new Simditor({
             textarea: '#textarea',
             toolbar: toolbar
