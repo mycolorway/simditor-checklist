@@ -24,5 +24,8 @@
   "dependencies": {
     "jquery": "2.x",
     "simditor": "~2.2.0"
+  },
+  "devDependencies": {
+    "jasmine-jquery": "~2.1.0"
   }
 }
