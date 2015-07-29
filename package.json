@@ -1,12 +1,11 @@
 {
   "name": "simditor-checklist",
   "description": "The mark extension for Simditor.",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "homepage": "https://github.com/nil/simditor-checklist",
-  "author": {
-    "name": "kshift",
-    "email": "kshift.lv@gmail.com"
-  },
+  "authors": [
+    "kshift <kshift.lv@gmail.com>"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/nil/simditor-checklist.git"

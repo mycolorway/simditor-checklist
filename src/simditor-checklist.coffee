@@ -40,107 +40,56 @@ class ChecklistButton extends Simditor.Button
       range.setStart $node[0], 0
       range.setEnd $node[0], @editor.util.getNodeLength($node[0])
 
-      @editor.selection.selectRange range
+      @editor.selection.range range
       document.execCommand 'strikethrough'
       $node.attr 'checked', !$node.attr('checked')
 
       @editor.selection.restore()
       @editor.trigger 'valuechanged'
 
+  _status: ->
+    super()
+    $node = @editor.selection.rootNodes()
 
-  status: ($node) ->
-    @setDisabled $node.is(@disableTag) if $node?
-    return true if @disabled
-    return @active unless $node?
-
-    if !$node.closest('ul, ol').hasClass('simditor-checklist')
-      @setActive false
-      return true
-    else
-      @setActive true
-      @editor.toolbar.findButton('ul').setDisabled(true)
+    if $node.is '.simditor-checklist'
       @editor.toolbar.findButton('ul').setActive(false)
-      @editor.toolbar.findButton('ol').setDisabled(true)
       @editor.toolbar.findButton('ol').setActive(false)
-      return false
+      @editor.toolbar.findButton('ul').setDisabled(true)
+      @editor.toolbar.findButton('ol').setDisabled(true)
+    else
+      @editor.toolbar.findButton('checklist').setActive(false)
 
 
   command: (param) ->
-    range = @editor.selection.getRange()
-    startNode = range.startContainer
-    endNode = range.endContainer
-    $startBlock = @editor.util.closestBlockEl(startNode)
-    $endBlock = @editor.util.closestBlockEl(endNode)
-
+    $rootNodes = @editor.selection.blockNodes()
     @editor.selection.save()
 
-    range.setStartBefore $startBlock[0]
-    range.setEndAfter $endBlock[0]
+    $list = null
+    $rootNodes.each (i, node) =>
+      $node = $ node
+      return if $node.is('blockquote, li') or $node.is(@disableTag) or !$.contains(document, node)
 
-    if $startBlock.is('li') and $endBlock.is('li')
-      $furthestStart = @editor.util.furthestNode $startBlock, 'ul, ol'
-      $furthestEnd = @editor.util.furthestNode $endBlock, 'ul, ol'
-      if $furthestStart.is $furthestEnd
-        getListLevel = ($li) ->
-          lvl = 1
-          while !$li.parent().is $furthestStart
-            lvl += 1
-            $li = $li.parent()
-          return lvl
-
-        startLevel = getListLevel $startBlock
-        endLevel = getListLevel $endBlock
-
-        if startLevel > endLevel
-          $parent = $endBlock.parent()
-        else
-          $parent = $startBlock.parent()
-
-        range.setStartBefore $parent[0]
-        range.setEndAfter $parent[0]
+      if $node.is '.simditor-checklist'
+        $node.children('li').each (i, li) =>
+          $li = $(li)
+          $childList = $li.children('ul, ol').insertAfter($node)
+          $('<p/>').append($(li).html() || @editor.util.phBr)
+            .insertBefore($node)
+        $node.remove()
+      else if $node.is 'ul, ol'
+        $('<ul class="simditor-checklist" />').append($node.contents())
+          .replaceAll($node)
+      else if $list and $node.prev().is($list)
+        $('<li/>').append($node.html() || @editor.util.phBr)
+          .appendTo($list)
+        $node.remove()
       else
-        range.setStartBefore $furthestStart[0]
-        range.setEndAfter $furthestEnd[0]
+        $list = $('<ul class="simditor-checklist"><li></li></ul>')
+        $list.find('li').append($node.html() || @editor.util.phBr)
+        $list.replaceAll($node)
 
-    $contents = $(range.extractContents())
-
-    results = []
-    $contents.children().each (i, el) =>
-      converted = @_convertEl el
-      for c in converted
-        if results.length and results[results.length - 1].is(@type) and c.is(@type)
-          results[results.length - 1].append(c.children())
-        else
-          results.push(c)
-
-    range.insertNode node[0] for node in results.reverse()
     @editor.selection.restore()
     @editor.trigger 'valuechanged'
-
-
-  _convertEl: (el) ->
-    $el = $(el)
-    results = []
-
-    if $el.is @type
-      $el.children('li').each (i, li) =>
-        $li = $(li)
-        $childList = $li.children('ul, ol').remove()
-        block = $('<p/>').append($(li).html() || @editor.util.phBr)
-        results.push block
-        results.push $childList if $childList.length > 0
-    else if $el.is 'ol, ul'
-      block = $('<ul class="simditor-checklist" />').append($el.html())
-      results.push(block)
-    else if $el.is 'blockquote'
-      children = @_convertEl child for child in $el.children().get()
-      $.merge results, children
-    else
-      block = $('<ul class="simditor-checklist"><li></li></ul>')
-      block.find('li').append($el.html() || @editor.util.phBr)
-      results.push(block)
-
-    results
 
 
   _decorate: ($checkbox) ->
