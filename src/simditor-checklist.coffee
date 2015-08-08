@@ -47,6 +47,15 @@ class ChecklistButton extends Simditor.Button
       @editor.selection.restore()
       @editor.trigger 'valuechanged'
 
+    @editor.inputManager.addKeystrokeHandler '13', 'li', (e, $node) =>
+      setTimeout =>
+        $li = @editor.selection.blockNodes().last().next()
+        if $li.length
+          $li[0].removeAttribute('checked')
+          document.execCommand('strikethrough')  if document.queryCommandState('strikethrough')
+      , 0
+
+
   _status: ->
     super()
     $node = @editor.selection.rootNodes()

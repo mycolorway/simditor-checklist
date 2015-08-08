@@ -4,7 +4,7 @@ describe 'simditor-checklist', ->
   simditor = null
 
 
-generateSimditor = ->
+  generateSimditor = ->
     content = '''
       <p>Simditor 是团队协作工具 <a href="http://tower.im">Tower</a> 使用的富文本编辑器。</p>
       <p>相比传统的编辑器它的特点是：</p>
@@ -41,15 +41,3 @@ generateSimditor = ->
     $simditor = $('.simditor')
     expect($simditor).toExist()
     expect($simditor.find('.simditor-toolbar ul li a.toolbar-item-checklist')).toExist()
-
-  it 'should insert a checklist when click the button', ->
-    $simditor = $('.simditor')
-    $body = $simditor.find('.simditor-body')
-    simditor = $simditor.data 'simditor'
-    $btn = $simditor.find('a.toolbar-item-checklist')
-
-    simditor.focus()
-    $btn.trigger 'mousedown'
-
-    expect($body.find('.simditor-checklist li')).toExist()
-

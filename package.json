@@ -1,7 +1,7 @@
 {
   "name": "simditor-checklist",
   "description": "The checklist extension for Simditor.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/nil/simditor-checklist",
   "authors": [
     "kshift <kshift.lv@gmail.com>"
