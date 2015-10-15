@@ -47,7 +47,7 @@ class ChecklistButton extends Simditor.Button
       @editor.selection.restore()
       @editor.trigger 'valuechanged'
 
-    @editor.inputManager.addKeystrokeHandler '13', 'li', (e, $node) =>
+    @editor.keystroke.add '13', 'li', (e, $node) =>
       setTimeout =>
         $li = @editor.selection.blockNodes().last().next()
         if $li.length
